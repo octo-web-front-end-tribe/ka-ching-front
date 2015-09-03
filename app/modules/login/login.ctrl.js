@@ -1,6 +1,6 @@
 (function() {
   var app = angular.module("kaching.login");
-  app.controller("LoginController", ["$state", "$http", "$window", "$location", loginController]);
+  app.controller("LoginController", ["$http", "$window", "$location", loginController]);
 
   function loginController($http, $window, $location) {
     var vm = this;

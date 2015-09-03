@@ -21,15 +21,9 @@
     });
 
     app.config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
-        $urlRouterProvider.otherwise("/");
+        $urlRouterProvider.otherwise("/homepage");
         $httpProvider.interceptors.push('authInterceptor');
         $stateProvider
-            .state("index", {
-                url: "/",
-                templateProvider: function ($templateCache) {
-                    return $templateCache.get('homepage/homepage.tpl.html');
-                }
-            })
             .state("homepage", {
                 url: "/homepage",
                 templateProvider: function ($templateCache) {
