@@ -43,7 +43,6 @@
     "no-undefined": 1,
     "no-underscore-dangle": 0,
     "no-unused-expressions": 0,
-    "no-use-before-define": "nofunc",
     "no-void": 2,
     "no-wrap-func": 0,
     "one-var": [1, "never"],
