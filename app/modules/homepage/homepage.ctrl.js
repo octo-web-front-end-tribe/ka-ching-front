@@ -1,11 +1,10 @@
 (function () {
     var app = angular.module("kaching.homepage");
-    app.controller("HomepageController", ["$location", "FriendsService", homepageController]);
+    app.controller("HomepageController", ["$location", "FriendsService", "AccountService", homepageController]);
 
-    function homepageController($location, FriendsService) {
+    function homepageController($location, FriendsService, AccountService) {
 
         var vm = this;
-        vm.balance = 123;
 
         FriendsService.getFriends(function (error, data) {
             if (error) {
@@ -15,5 +14,15 @@
                 vm.friends = data;
             }
         });
+
+        AccountService.getAccount(function(error, data){
+            if(error) {
+                console.error('erreur lors de la récupération des comptes');
+                $location.url('/login');
+            } else {
+                vm.balance = data.balance;
+            }
+        });
+
     }
 })();
