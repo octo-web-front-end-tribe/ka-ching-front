@@ -1,3 +1,3 @@
-(function() {
-  angular.module("kaching.homepage", [])
+(function () {
+  angular.module("kaching.homepage", []);
 })();

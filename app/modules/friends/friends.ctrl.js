@@ -1,6 +1,6 @@
-(function() {
-  var app = angular.module("kaching.friends")
-  app.controller("FriendsController", ["FriendsService", friendsController])
+(function () {
+  angular.module("kaching.friends")
+    .controller("FriendsController", ["FriendsService", friendsController]);
 
   function friendsController(FriendsService) {
     var vm = this;
