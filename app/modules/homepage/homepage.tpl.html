@@ -6,8 +6,8 @@
         </div>
     </div>
 </div>
-<div class="row" ng-controller="HomepageController as vm">
-    <div class="col-md-12">
+<div class="row" ng-controller="FriendsController as friendsCtrl">
+    <div class="col-md-12" ng-init="friendsCtrl.getFriends()">
         <div id="user-friends">
             <h3>My friends</h3>
             <table class="table">
@@ -17,7 +17,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="friend in vm.friends">
+                <tr ng-repeat="friend in friendsCtrl.friends">
                     <td>{{friend.name}}</td>
                 </tr>
                 </tbody>

@@ -1,3 +1,3 @@
 (function () {
-  angular.module("kaching.homepage", []);
+  angular.module("kaching.homepage", ["kaching.account"]);
 })();

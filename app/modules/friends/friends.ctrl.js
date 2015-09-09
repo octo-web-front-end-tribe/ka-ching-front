@@ -4,10 +4,15 @@
 
   function friendsController(FriendsService) {
     var vm = this;
-    vm.getFriends = getFriends();
+    vm.getFriends = getFriends;
+    vm.friends = [];
 
     function getFriends() {
-      return FriendsService.getFriends();
+      FriendsService.getFriends().then(function (response) {
+        vm.friends = response.data;
+      }, function () {
+        vm.error = "Error: cannot retrieve the Friends list";
+      });
     }
 
   }

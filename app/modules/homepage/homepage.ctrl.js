@@ -1,28 +1,19 @@
 (function () {
   var app = angular.module("kaching.homepage");
-  app.controller("HomepageController", ["$location", "FriendsService", "AccountService", homepageController]);
+  app.controller("HomepageController", ["AccountService", homepageController]);
 
-  function homepageController($location, FriendsService, AccountService) {
-
+  function homepageController(AccountService) {
     var vm = this;
+    vm.getAccount = getAccount;
+    vm.balance = null;
+    vm.error = null;
 
-    FriendsService.getFriends(function (error, data) {
-      if (error) {
-        console.error("erreur lors de la récupération de la liste des amis");
-        $location.url("/login");
-      } else {
-        vm.friends = data;
-      }
-    });
-
-    AccountService.getAccount(function (error, data) {
-      if (error) {
-        console.error("erreur lors de la récupération des comptes");
-        $location.url("/login");
-      } else {
-        vm.balance = data.balance;
-      }
-    });
-
+    function getAccount() {
+      AccountService.getAccount().then(function (response) {
+        vm.balance = response.data.balance;
+      }, function () {
+        vm.error = "Error: cannot retrieve the Account information";
+      });
+    }
   }
 })();

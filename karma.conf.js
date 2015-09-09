@@ -5,6 +5,7 @@ module.exports = function (config) {
 
     // list of files / patterns to load in the browser
     files: [
+      "node_modules/jasmine-sinon/lib/jasmine-sinon.js",
       "app/bower_components/angular/angular.js",
       "app/bower_components/angular-mocks/angular-mocks.js",
       "app/bower_components/jquery/dist/jquery.js",
@@ -39,7 +40,7 @@ module.exports = function (config) {
     autoWatch: true,
 
     // frameworks to use
-    frameworks: ["jasmine"],
+    frameworks: ["jasmine", "sinon", "chai"],
 
     // Start these browsers, currently available:
     // - Chrome
@@ -55,8 +56,9 @@ module.exports = function (config) {
 
     plugins: [
       "karma-phantomjs-launcher",
-      "karma-jasmine"
-    ],
+      "karma-jasmine",
+      "karma-sinon",
+      "karma-chai"],
 
     // If browser does not capture in given timeout [ms], kill it
     captureTimeout: 60000,
