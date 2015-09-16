@@ -1,0 +1,59 @@
+<div class="row" ng-controller="TransfersController as vm">
+    <div class="col-md-12">
+        <div>
+            <h2>Historique des virements</h2>
+
+            <p>
+                Trier par :
+            </p>
+
+            <div class="radio">
+                <div>
+                    <label class="control-label">
+                        <input type="radio" ng-model="vm.orderByDateDescending"
+                               name="orderByDateDescending" value="true"
+                               ng-change="vm.reloadTransfers()"> Date
+                        décroissante </label>
+                </div>
+            </div>
+            <div class="radio">
+                <label>
+                    <input
+                            type="radio"
+                            ng-model="vm.orderByDateDescending"
+                            name="orderByDateDescending" value="false"
+                            ng-change="vm.reloadTransfers()">Date
+                    croissante</label>
+            </div>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" ng-model="vm.orderByAmountDescending" name="orderByAmountDescending"
+                       ng-change="vm.reloadTransfers()">Trier par montant décroissant
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" ng-model="vm.groupedByRecipient" name="groupByRecipient"
+                       ng-change="vm.reloadTransfers()">Destinataires groupés</label>
+        </div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Destinataire</th>
+                <th>Date</th>
+                <th>Montant</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="transfer in vm.transfers">
+                <td>{{transfer.id}}</td>
+                <td>{{transfer.recipient}}</td>
+                <td>{{transfer.date}}</td>
+                <td>{{transfer.amount}} €</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

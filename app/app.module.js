@@ -1,8 +1,8 @@
 (function () {
 
-    var app = angular.module("kaching", ["kaching.login", "kaching.friends", "kaching.homepage", "ui.router", "templates"]);
+    var app = angular.module("kaching", ["kaching.login", "kaching.friends", "kaching.homepage", "kaching.transfers", "ui.router", "templates"]);
 
-    app.factory('authInterceptor', function ($rootScope, $q, $window) {
+    app.factory('authInterceptor', function ($rootScope, $q, $window, $location) {
         return {
             request: function (config) {
                 config.headers = config.headers || {};
@@ -14,6 +14,17 @@
             response: function (response) {
                 if (response.status === 401) {
                     // handle the case where the user is not authenticated
+                    $window.sessionStorage.removeItem('token');
+                    $location.url('/login');
+                } else {
+                    return response || $q.when(response);
+                }
+            },
+            responseError: function (response) {
+                if (response.status === 401) {
+                    // handle the case where the user is not authenticated
+                    $window.sessionStorage.removeItem('token');
+                    $location.url('/login');
                 }
                 return response || $q.when(response);
             }
@@ -40,6 +51,12 @@
                 url: "/friends",
                 templateProvider: function ($templateCache) {
                     return $templateCache.get('friends/friends.tpl.html');
+                }
+            })
+            .state("transfers", {
+                url: "/transfers/all",
+                templateProvider: function ($templateCache) {
+                    return $templateCache.get('transfers/all.tpl.html');
                 }
             });
     });
