@@ -10,15 +10,17 @@
     <div class="col-md-12" ng-init="friendsCtrl.getFriends()">
         <div id="user-friends">
             <h3>My friends</h3>
-            <table class="table">
+            <table class="table table-condensed">
                 <thead>
                 <tr>
+                    <th></th>
                     <th>Name</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr ng-repeat="friend in friendsCtrl.friends">
-                    <td>{{friend.name}}</td>
+                    <td><img src="{{friend.user.picture.thumbnail}}"</td>
+                    <td>{{friend.user.name.first}} {{friend.user.name.last}}</td>
                 </tr>
                 </tbody>
             </table>
