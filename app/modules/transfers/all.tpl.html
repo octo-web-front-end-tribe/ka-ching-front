@@ -7,24 +7,6 @@
                 Trier par :
             </p>
 
-            <div class="radio">
-                <div>
-                    <label class="control-label">
-                        <input type="radio" ng-model="vm.orderByDateDescending"
-                               name="orderByDateDescending" value="true"
-                               ng-change="vm.reloadTransfers()"> Date
-                        décroissante </label>
-                </div>
-            </div>
-            <div class="radio">
-                <label>
-                    <input
-                            type="radio"
-                            ng-model="vm.orderByDateDescending"
-                            name="orderByDateDescending" value="false"
-                            ng-change="vm.reloadTransfers()">Date
-                    croissante</label>
-            </div>
         </div>
         <div class="checkbox">
             <label>
@@ -36,6 +18,24 @@
             <label>
                 <input type="checkbox" ng-model="vm.groupedByRecipient" name="groupByRecipient"
                        ng-change="vm.reloadTransfers()">Destinataires groupés</label>
+        </div>
+        <div class="radio">
+            <div>
+                <label class="control-label">
+                    <input type="radio" ng-model="vm.orderByDateDescending"
+                           name="orderByDateDescending" value="true"
+                           ng-change="vm.reloadTransfers()"> Date
+                    décroissante </label>
+            </div>
+        </div>
+        <div class="radio">
+            <label>
+                <input
+                        type="radio"
+                        ng-model="vm.orderByDateDescending"
+                        name="orderByDateDescending" value="false"
+                        ng-change="vm.reloadTransfers()">Date
+                croissante</label>
         </div>
         <table class="table">
             <thead>
