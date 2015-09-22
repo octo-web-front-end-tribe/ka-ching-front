@@ -8,15 +8,19 @@
     vm.error = null;
 
     function submit(credentials) {
-      LoginService.authenticate(credentials).then(function (response) {
-        $window.sessionStorage.token = response.data.token;
-        $location.url("/homepage");
-      }, function () {
-        // Erase the token if the user fails to log in
-        delete $window.sessionStorage.token;
-        // Handle login errors here
-        vm.error = "Error: Invalid user or password";
-      });
+      LoginService.authenticate(credentials).then(
+        function (response) {
+          $window.sessionStorage.token = response.data.token;
+          $window.sessionStorage.username = response.data.username;
+          $location.url("/homepage");
+        },
+        function () {
+          // Erase the token if the user fails to log in
+          delete $window.sessionStorage.token;
+          // Handle login errors here
+          vm.error = "Error: Invalid user or password";
+        }
+      );
     }
   }
 })();

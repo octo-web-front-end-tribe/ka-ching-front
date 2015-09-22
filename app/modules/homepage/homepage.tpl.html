@@ -1,8 +1,9 @@
-<div class="row" ng-controller="HomepageController as vm">
+<div class="row" ng-controller="HomepageController as homepageCtrl">
     <div class="col-md-12">
         <div id="user-balance">
-            <h2>Solde</h2>
-            <span>{{vm.balance | currency}}</span>
+          <h1>Bonjour {{homepageCtrl.username}}</h1>
+            <h2>Votre Solde</h2>
+            <h3>{{homepageCtrl.balance | currency}}</h3>
         </div>
     </div>
 </div>
